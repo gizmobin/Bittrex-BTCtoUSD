@@ -13,11 +13,16 @@ var observer = new MutationObserver(function(mutations) {
         mutations.forEach(function(mutation) {
             // console.log('mutation.type = ' + mutation.type);
             for (var i = 0; i < mutation.addedNodes.length; i++) {
-                if( (mutation.addedNodes[i].cells != null) && (mutation.addedNodes[i].cells.length > 7) ) {
-                    var curr = mutation.addedNodes[i].cells[7].innerText;
+                var currRow = mutation.addedNodes[i];
+                if( (currRow.cells != null) && (currRow.cells.length > 7) && (currRow.cells[2].innerText!='BTC') ) {
+                    var curr = currRow.cells[7].innerText;
+                    var quan = currRow.cells[6].innerText;
                     if( (curr.indexOf('$') == -1) && (curr>0) ) {
-                        var next = (curr * BTCtoUSD).toLocaleString('en-US', {style:'currency',currency:'USD'});
-                        mutation.addedNodes[i].cells[7].innerHTML = curr + "<br/><small>" + next + "</small>";
+                        var USDval = (curr * BTCtoUSD);
+                        var next = USDval.toLocaleString('en-US', {style:'currency',currency:'USD'});
+                        var item = (USDval / quan).toLocaleString('en-US', {style:'currency',currency:'USD'});
+                        currRow.cells[7].innerHTML = curr + "<br/><small>" + next + "</small>";
+                        currRow.cells[8].innerHTML += "<br/><small><i>" + item + "</i></small>";
                         // console.log( curr + " => " + next );
                     }
                 }
