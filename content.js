@@ -14,7 +14,7 @@ var observer = new MutationObserver(function(mutations) {
             // console.log('mutation.type = ' + mutation.type);
             for (var i = 0; i < mutation.addedNodes.length; i++) {
                 var currRow = mutation.addedNodes[i];
-                if( (currRow.cells != null) && (currRow.cells.length > 7) && (currRow.cells[2].innerText!='BTC') ) {
+                if( (currRow.cells != null) && (currRow.cells.length > 7) /* && (currRow.cells[2].innerText!='BTC') */ ) {
                     var curr = currRow.cells[7].innerText;
                     var quan = currRow.cells[6].innerText;
                     if( (curr.indexOf('$') == -1) && (curr>0) ) {
