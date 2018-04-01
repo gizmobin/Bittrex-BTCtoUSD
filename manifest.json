@@ -1,17 +1,19 @@
 {
-"manifest_version": 2,
+    "manifest_version": 2,
+    
     "name": "Bittrex show USD",
     "description": "Add the USD value to the output of the BTC Value column on Bittrex",
-    "version": "2.18.0120",
-    "content_scripts": [
-        {
-            "matches": [
-                "https://bittrex.com/Balance"
-            ],
-            "js": [
-                "content.js"
-            ],
-            "run_at": "document_end"
-        }
-    ]
+    
+    "version": "2.18.0331",
+    
+    "content_scripts": [{
+        "matches": [
+            "https://bittrex.com/Balance",
+            "https://beta.bittrex.com/Balance"
+        ],
+        "js": [
+            "content.js"
+        ],
+        "run_at": "document_end"
+    }]
 }
