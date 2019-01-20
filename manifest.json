@@ -4,7 +4,7 @@
     "name": "Bittrex show USD",
     "description": "Add the USD value to the output of the BTC Value column on Bittrex",
     
-    "version": "2.18.0331",
+    "version": "2.19.0120",
     
     "content_scripts": [{
         "matches": [
